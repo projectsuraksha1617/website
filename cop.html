@@ -1,0 +1,210 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Suraksha Login & Sign Up</title>
+
+<script type="text/javascript">
+
+function DrawCaptcha()
+  {
+   var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+                     var i;
+                     for (i=0;i<6;i++){
+                       var a = alpha[Math.floor(Math.random() * alpha.length)];
+                       var b = alpha[Math.floor(Math.random() * alpha.length)];
+                       var c = alpha[Math.floor(Math.random() * alpha.length)];
+                       var d = alpha[Math.floor(Math.random() * alpha.length)];
+                       var e = alpha[Math.floor(Math.random() * alpha.length)];
+                       var f = alpha[Math.floor(Math.random() * alpha.length)];
+                       var g = alpha[Math.floor(Math.random() * alpha.length)];
+                      }
+                    var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f + ' ' + g;
+  document.getElementById("txtCaptcha").value = code
+  }
+  function check(input) {
+  var cap =removeSpaces(document.getElementById('txtCaptcha').value);
+if (input.value != cap ) {
+  input.setCustomValidity("Error in code Please Check!");
+  } else {
+  // input is fine -- reset the error message
+  input.setCustomValidity('');
+  }
+  }
+  // Remove the spaces from the entered and generated code
+ function removeSpaces(string){
+  return string.split(' ').join('');
+ }
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="css_user.css" media="all">
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="passwor.js"></script>
+</head>
+<body onload="DrawCaptcha();">
+<div id="wrapper">
+  <h1>Suraksha Login & Sign Up</h1>
+  <div id="container">
+	<section class="tabs">
+		<input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+		<span for="tab-1" class="tab-label-1">Login</span>
+
+		<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+		<span for="tab-2" class="tab-label-2">Sign up</span>
+
+		<input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+		<span for="tab-3" class="tab-label-3">Forgot Password</span>
+	
+		<div class="clear-shadow"></div>
+		
+		<div id="content">
+			<div class="content-2">
+					
+				<form method="post" action="cop.php" name="value" >
+				 <p>
+					<label for="namesignup" class="name" >First Name</label>
+					<input class="field" name="fname" required="required" type="text" placeholder=" First Name" pattern="[A-Za-z]*" title="please enter only alphabets" />
+				  </p>
+				  <p>
+					<label for="namesignup" class="name" >Middle Name</label>
+					<input class="field" name="mname"  type="text" placeholder=" Middle Name" pattern="[A-Za-z]*" title="please enter only alphabets"/>
+				  </p>
+				  <p>
+					<label for="namesignup" class="name" >Last Name</label>
+					<input class="field" name="lname"  type="text" placeholder="Last Name" required pattern="[A-Za-z]*" title="please enter only alphabets"/>
+				  </p>
+				  <p>
+					<label for="adhaarsignup" class="aname" >Adhaar Number</label>
+					<input class="field" name="adhaar" maxlength="12" required="required" type="text" placeholder="Adhaar Number" pattern="[0-9]{12}" title="Must contain your 12-digit adhaar number"/>
+				  </p>
+				  <p>
+					<label for="adhaarsignup" class="role" >Role</label>
+					<input class="field" name="role" required="required" type="text" placeholder="Role" pattern="[A-Za-z]*" title="please enter only alphabets"/>
+				  </p>
+				  <p>
+				  <label for="emailsignup" class="youmail" > Email</label>
+				  <input class="field" maxlength="30" required="required" type="text" name="email" placeholder="me@example.com" pattern="[A-Za-z0-9._]*@gmail.com|[A-Za-z0-9._]*@yahoo.com|[A-Za-z0-9._]*@outlook.com|[A-Za-z0-9._]*@rediffmail.com|[A-Za-z0-9._]*@hotmail.com" title="please enter a valid email address"/>
+				  <br />
+				  </p>
+				  <p>
+				  <label for="pass1"  class="youpasswd" > Password </label><br/>
+				  <input class="field" name="password" id="pass1" required  type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="password" title="Must contain at least one number and one uppercase and lowercase letter"/>
+				  <span id="result"></span>
+				  </p>
+				  <p>
+					<label for="pass2" class="youpasswd" >Confirm your password </label>
+					<input class="field" name="confirm" required="required" id="pass2"  type="password" onkeyup="checkPass(); return false;" placeholder="Re-type password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+				   <span id="confirmMessage" class="confirmMessage"></span>
+				  </p>
+				  <p>
+					<label for="addsignup" class="add" >Residential Address</label>
+					<input class="field"  name="Address1" type="text" required="required" maxlength="80" placeholder="Address Line 1" pattern="[A-Za-z0-9_ ]*" title="please enter only alphabets and numbers. Using special characters is invalid " />
+				    <input class="field"  name="Address2" type="text"  maxlength="80" placeholder="Address Line 2" pattern="[A-Za-z0-9_ ]*" title="please enter only alphabets and numbers. Using special characters is invalid " />
+				  </p>
+				  <p>
+					<label for="citysignup" class="city" >City</label>
+					<input class="field" name="city" type="text" required="required"  placeholder="city" pattern="[A-Za-z]*" title="please enter only alphabets"/>
+				 </p>
+				  <p>
+				  <label for="state" >State</label>
+				  <select name="state" class="field"  >
+				  <option selected="" value="Default" >Please select a state</option>
+				  <option value="AP">Andra Pradesh</option>				  	
+				  <option value="ARP">Arunachal Pradesh</option>	
+				  <option value="A">Assam</option>
+				  <option value="B">Bihar</option>	
+				  <option value="C">Chhattisgarh</option>
+				  <option value="CH">Chandigarh</option>				  
+				  <option value="G">Goa</option>
+				  <option value="D">Delhi</option>
+   				  <option value="GU">Gujarat</option>	
+				  <option value="H">Haryana</option>	
+				  <option value="HP">Himachal Pradesh</option>	
+				  <option value="JK">Jammu and Kashmir</option>	
+				  <option value="J">Jharkhand</option>	
+				  <option value="K">Karnataka</option>	
+				  <option value="KE">Kerala</option>	
+				  <option value="MP">Madya Pradesh</option>	
+				  <option value="M">Maharashtra</option>	
+				  <option value="MA">Manipur</option>	
+				  <option value="MG">Meghalaya</option>	
+				  <option value="MI">Mizoram</option>	
+				  <option value="N">Nagaland</option>
+				  <option value="O">Orissa</option>	
+				  <option value="P">Punjab</option>	
+				  <option value="R">Rajasthan</option>	
+				  <option value="S">Sikkim</option>	
+				  <option value="TN">Tamil Nadu</option>	
+				  <option value="T">Tripura</option>	
+				  <option value="U">Uttaranchal</option>	
+				  <option value="UP">Uttar Pradesh</option>	
+				  <option value="WB">West Bengal</option>	
+				  </select>
+				  </p>
+				 
+				  
+				  <p>
+					<label for="zipsignup" class="zip">zip code</label>
+					<input class="field" name="zip" type="text" required="required" maxlength="6" placeholder="zip code" pattern="[0-9]{6}" title="Must contain your 6-digit zip code"/>
+				  </p>
+				  <p>
+					<label for="zipsignup" class="zip">Date of Birth</label>
+					<input class="field" name="date" type="date" required="required" maxlength="6" placeholder="zip code" pattern="[0-9]{6}" title="Must contain your 6-digit zip code"/>
+				  </p>
+				  <p>
+					<label for="mobsignup" class="mob" >Mobile Number</label>
+					<input class="field" name="mobile" maxlength="10" required="required" type="text" placeholder="Mobile Number" pattern="[0-9]{10}" title="Must contain your 10-digit mobile number"/>
+				  </p>
+				  <p>
+				  <label for="imgsignup" class="img">Upload your Image</label><br/>
+					<input type="file" accept="image/*" name="image" required/>
+				</p>
+		
+
+		
+ Enter the captcha:
+<input type="text" id="txtCaptcha" />
+ <input type="button" id="btnrefresh" value="Refresh" onclick="DrawCaptcha();" /> <br/>
+ <input type="text" oninput="check(this)" name="captcha" required  id="txtInput"/>
+ <a href="index.html"> <input type="submit" id="Button1" value="Sign up" /></a> 
+
+				</form>
+			</div>
+			<div class="content-1">
+				
+				<form  action="login_cop.php" method="POST" autocomplete="on">
+				<p>
+					<label for="adhaarsignup" class="aname" >Adhaar Number</label>
+					<input class="field" name="adhaar" maxlength="12" required="required" type="text" placeholder="Adhaar Number" pattern="[0-9]{12}" title="Must contain your 12-digit adhaar number"/>
+				  </p>
+				  <p>
+					<label for="password" class="youpasswd" > Password </label>
+					<input class="field" name="password" required="required" type="password" placeholder="password"  />
+				  </p>
+				  <p class="keeplogin">
+					<input type="checkbox" name="keep" id="keep" value="keep" /> Keep me logged in
+					<a href="index.html"><input type="submit" name="submit" value="Login" /></a>
+				  </p>
+				</form>
+			<a href="index.html"><input type="submit" name="Back" value="Back" /></a>
+			</div>
+			<div class="content-3">
+				<form  action="ind.php" autocomplete="on">
+				  <p>
+					<label for="emailsignup" class="youmail" > Email</label>
+					<input class="field" name="email" required="required" type="email" placeholder="me@example.com" title="You can use letters, numbers, and periods."/>
+				  </p>
+				  <p class="signin button">
+					<input type="submit" value="Get New Password"/>
+				  </p>
+				</form>
+			</div>
+		</div>
+	</section>
+  </div>
+</div>
+</body>
+</html>

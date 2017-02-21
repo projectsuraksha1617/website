@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Suraksha Login & Sign Up Forms</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="pass.js"></script>
+<html>
+
+
+<link rel="stylesheet" type="text/css" href="cop.css">
+
+<!-- JavaScript -->
+<script type="text/javascript" src="9lessons.j"></script>
+ <script type="text/javascript">
+var ck_name = /^[A-Za-z]{3,20}$/;
+var ck_email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i 
+var ck_username = /^[A-Za-z0-9_]{1,20}$/;
+var ck_password =  /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+var ck_adhaarno = /^[0-9]{3,20}$/;
+
+function validate(form){
+var name = form.namesignup.value;
+var email = form.emailsignup.value;
+var password = form.passwordsignup.value;
+var adhaar no = form.adhaarsignup.value;
+ 
+  
+  
+ var errors = [];
+ 
+ if (!ck_name.test(name)) {
+  errors[errors.length] = "You must enter a valid name containing only alphabets .";
+ }
+  
+ if (!ck_email.test(email)) {
+  errors[errors.length] = "You must enter a valid email address.";
+ }
+ 
+
+ if (!ck_password.test(password)) {
+  errors[errors.length] = "You must enter a valid Password min 6 char.";
+ }
+ 
+ if (errors.length > 0) {
+  reportErrors(errors);
+  return false;
+ }
+ if (!ck_adhaarno.test(adhaarno)) {
+  errors[errors.length] = "You must enter a valid adhaar no containing only numbers .";
+ }
+  
+ 
+ return true;
+}
+
+function reportErrors(errors){
+ var msg = "Please Enter Valide Data...\n";
+ for (var i = 0; i<errors.length; i++) {
+  var numError = i + 1;
+  msg += "\n" + numError + ". " + errors[i];
+ }
+ alert(msg);
+}
+</script>
+</head>
+
+<body>
+<form action="action_page.php">
+  Birthday:
+  <input type="date" name="bday">
+</form>
+
+<p><strong>Note:</strong> type="date" is not supported in Firefox, or Internet Explorer 11 and earlier versions.</p>
+<div id="wrapper">
+  <h1>Suraksha Login & Sign Up Forms</h1>
+  <div id="container">
+	<section class="tabs">
+		<input id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+		<span for="tab-1" class="tab-label-1">Login</span>
+
+		<input id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+		<span for="tab-2" class="tab-label-2">Sign up</span>
+
+		<input id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+		<span for="tab-3" class="tab-label-3">Forgot Password</span>
+	
+		<div class="clear-shadow"></div>
+		
+		<div id="content">
+<div class="content-1">
+				
+				<form  action="" autocomplete="on">
+				<p>
+					<label for="policeid" class="aname" data-icon="u" >Adhaar No</label>
+					<input class="field" name="policesignup" required type="text" placeholder="Police id"/>
+				  </p>
+				  <p>
+					<label for="password" class="youpasswd" data-icon="p"> Password </label>
+					<input class="field" name="password" required type="password" placeholder="password" />
+				  </p>
+				  <p class="keeplogin">
+					<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> Keep me logged in
+					<input type="submit" value="Login" />
+				  </p>
+				</form>
+			</div>
+
+			<div class="content-2">
+					
+				<form  action="cop.php" method="POST" autocomplete="on" name="form" onSubmit="return validate(this);">
+				  <p>
+					<label for="namesignup" class="name" data-icon="n">First Name</label>
+					<input class="field" name="fname"  type="text" placeholder="First Name" />
+				  </p>
+ <p>
+					<label for="namesignup" class="name" data-icon="n">Middle Name</label>
+					<input class="field" name="mname"  type="text" placeholder="Middle Name" />
+				  </p>
+ <p>
+					<label for="namesignup" class="name" data-icon="n">Last Name</label>
+					<input class="field" name="lname"  type="text" placeholder="Last Name" />
+				  </p>
+				  <p>
+					<label for="adhaarsignup" class="aname" data-icon="a">Adhaar No</label>
+					<input class="field" name="adhaar"  type="text" placeholder="Adhaar Number"  pattern="[0-9]{1}[0-9]{15}"maxlength="16"  />
+				  </p>
+				
+				  <label for="emailsignup" class="youmail" data-icon="e" > Email</label>
+				  <input class="field" maxlength="30" required="required" type="text" name="email" placeholder="myemail@gmail.com" pattern="[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"/>
+				  <br />
+				  </p></p> <p>
+				  <label for="passwordsignup" class="youpasswd" data-icon="p"> Password </label><br/>
+				  <input class="field" name="password" id="password" required="required" maxlength="25" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"/>
+				  <span id="result"></span>
+				  </p>
+				  <p>
+					<label for="passwordsignup_confirm" class="youpasswd" data-icon="C">Confirm your password </label>
+					<input class="field" name="confirm" required="required" maxlength="25" type="password" placeholder="Re-type password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+				  </p>
+				 			  </p>
+				  <p>
+					<label for="addsignup" class="dob" data-icon="r">Address1</label>
+					<input class="field" name="Address1"  type="text" placeholder="Residential Address" />
+				  </p>
+<p>
+					<label for="addsignup" class="dob" data-icon="r">Address2</label>
+					<input class="field" name="Address2"  type="text" placeholder="Residential Address" />
+				  </p>
+				  <p>
+					<label for="addsignup" class="dob" data-icon="r">City</label>
+					<input class="field" name="city"  type="text" placeholder="" />
+				  <p>				  <p>
+					  <p>
+				  <label for="state">State</label>
+				  <select name="state" class="field">
+				  <option selected="" value="Default">Please select a state</option>
+				  <option value="AP">Andra Pradesh</option>				  	
+				  <option value="ARP">Arunachal Pradesh</option>	
+				  <option value="A">Assam</option>
+				  <option value="B">Bihar</option>	
+				  <option value="C">Chhattisgarh</option>
+				  <option value="CH">Chandigarh</option>				  
+				  <option value="G">Goa</option>
+				  <option value="D">Delhi</option>
+   				  <option value="GU">Gujarat</option>	
+				  <option value="H">Haryana</option>	
+				  <option value="HP">Himachal Pradesh</option>	
+				  <option value="JK">Jammu and Kashmir</option>	
+				  <option value="J">Jharkhand</option>	
+				  <option value="K">Karnataka</option>	
+				  <option value="KE">Kerala</option>	
+				  <option value="MP">Madya Pradesh</option>	
+				  <option value="M">Maharashtra</option>	
+				  <option value="MA">Manipur</option>	
+				  <option value="MG">Meghalaya</option>
+				  <option value="N">Nagaland</option>
+				  <option value="O">Orissa</option>	
+				  <option value="P">Punjab</option>	
+				  <option value="R">Rajasthan</option>	
+				  <option value="S">Sikkim</option>	
+				  <option value="TN">Tamil Nadu</option>	
+				  <option value="T">Tripura</option>	
+				  <option value="U">Uttaranchal</option>	
+				  <option value="UP">Uttar Pradesh</option>	
+				  <option value="WB">West Bengal</option>	
+
+				  </select>
+				  </p>
+				  <p>
+					
+
+					<label for="datesignup" class="dob" data-icon="d">Date Of Birth</label>
+					<input class="field" name="date"  type="text" placeholder="Date Of Birth" />
+				  </p>
+		<label for="datesignup" class="dob" data-icon="d">Zip code</label>
+					
+<input class="field" name="zip" type="text" required="required" maxlength="6" placeholder="zip code"/>
+				  </p>
+				  <p>
+					<label for="mobsignup" class="dob" data-icon="m">Mobile Number</label>
+					
+					<input type="text" name="mobile" pattern="[7-9]{1}[0-9]{9}" title="Mobile number with 7-9 and remaing 9 digit with 0-9">
+				  </p>
+				  <p>
+				  <label for="mobsignup" class="dob">Upload your Image</label><br/>
+					<input type="file" name="image" />
+				</p>
+				  <p class="signin button">
+					<input type="checkbox"  /> I agree with terms and conditions 
+					<input type="submit" value="Sign up"/>
+				  </p>
+				</form>
+			</div>
+
+			
+
+			<div class="content-3">
+				<form  action="" autocomplete="on">
+				  <p>
+					<label for="emailsignup" class="youmail" data-icon="e" > Email</label>
+					<input class="field" name="emailsignup" required type="email" placeholder="myemail@gmail.com"/>
+				  </p>
+				  <p class="signin button">
+					<input type="submit" value="Get New Password"/>
+				  </p>
+				</form>
+			</div>
+			
+		</div>
+	</section>
+  </div>
+</div>
+</body>
+</html>
